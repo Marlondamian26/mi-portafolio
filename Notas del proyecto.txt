@@ -1,0 +1,4 @@
+Actualizar commit en git
+
+PS C:\Users\Marlon Damián\mi-portafolio> git add .
+PS C:\Users\Marlon Damián\mi-portafolio> git commit -m "feat: añadido datos personalizados"
