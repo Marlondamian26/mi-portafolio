@@ -11,3 +11,70 @@ git remote remove origin
 git remote add origin https://github.com/Marlondamian26/mi-portafolio.git
 git branch -M main
 git push -u origin main --force
+
+
+
+
+
+
+Para eliminar todo el historial de commits y dejar solo el estado actual de tus archivos:
+
+
+## 🔧 Método 1: Recomendado (crear una nueva rama huérfana)
+Este es el método más limpio y directo:
+
+# Paso 1: Ve a la carpeta de tu proyecto
+cd "C:\Users\Marlon Damián\mi-portafolio"
+
+# Paso 2: Crear una nueva rama huérfana (sin historial)
+git checkout --orphan nueva-rama-limpia
+
+# Paso 3: Agregar todos los archivos actuales
+git add .
+
+# Paso 4: Hacer un nuevo commit con el estado actual
+git commit -m "feat: versión inicial limpia del portafolio"
+
+# Paso 5: Eliminar la rama antigua (main/master)
+git branch -D main
+
+# Paso 6: Renombrar la nueva rama a main
+git branch -m main
+
+# Paso 7: Forzar la subida a GitHub (reescribe el historial remoto)
+git push -f origin main
+```
+
+## 📋 Método 2: Usando `git rebase` (más complejo)
+
+Si prefieres mantener la rama `main` pero eliminar el historial:
+
+# Paso 1: Ir al proyecto
+cd "C:\Users\Marlon Damián\mi-portafolio"
+
+# Paso 2: Crear un commit que represente el estado actual
+git add .
+git commit -m "feat: estado actual del portafolio"
+
+# Paso 3: Hacer un rebase interactivo para quitar el historial
+git rebase -i --root
+
+# Se abrirá un editor. Cambia "pick" por "squash" en todos excepto el primero.
+# Guarda y cierra.
+
+# Paso 4: Forzar la subida a GitHub
+git push -f origin main
+```
+
+
+## 📌 **Resumen de comandos (Método 1 - Recomendado)**
+
+cd "C:\Users\Marlon Damián\mi-portafolio"
+git checkout --orphan nueva-rama-limpia
+git add .
+git commit -m "feat: versión inicial limpia del portafolio"
+git branch -D main
+git branch -m main
+git push -f origin main
+```
+
